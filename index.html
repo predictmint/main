@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EXIT_9TO5 — Kalshi Crypto Bot Journal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<canvas id="rain"></canvas>
+
+<div class="scanlines"></div>
+
+<div class="wrap">
+
+  <header class="boot">
+    <div class="boot-line" id="bootLine">&gt; connecting to kalshi_demo_env...</div>
+    <div class="brand">
+      <span class="brand-mark">exit</span><span class="brand-slash">/</span><span class="brand-tag">9to5</span>
+      <span class="mode-pill" id="modePill">PAPER MODE</span>
+    </div>
+    <p class="tagline">an 18-year-old's autonomous crypto prediction bot. no boss. no alarm clock. just the tape.</p>
+  </header>
+
+  <section class="stats">
+    <div class="stat">
+      <span class="stat-label">net p&amp;l</span>
+      <span class="stat-value" id="statPnl">$0.00</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">win rate</span>
+      <span class="stat-value" id="statWinRate">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">avg risk:reward</span>
+      <span class="stat-value" id="statRR">—</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">trades logged</span>
+      <span class="stat-value" id="statCount">0</span>
+    </div>
+    <div class="stat">
+      <span class="stat-label">days free</span>
+      <span class="stat-value" id="statDays">0</span>
+    </div>
+  </section>
+
+  <section class="grid">
+
+    <div class="panel panel-tape">
+      <div class="panel-head">
+        <h2>live tape</h2>
+        <span class="panel-sub">simulated feed · 15–60m markets</span>
+      </div>
+      <div class="tickers" id="tickers"></div>
+
+      <div class="engine">
+        <div class="engine-row">
+          <span class="engine-label">strategy</span>
+          <select id="strategySelect">
+            <option value="fairvalue">fair-value model</option>
+            <option value="off">off — watching only</option>
+          </select>
+        </div>
+        <div class="engine-row">
+          <span class="engine-label">status</span>
+          <span class="engine-status" id="engineStatus">scanning...</span>
+        </div>
+        <div class="engine-row">
+          <button id="toggleRun" class="btn-primary">pause bot</button>
+          <button id="resetAll" class="btn-ghost">reset run</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel panel-positions">
+      <div class="panel-head">
+        <h2>open positions</h2>
+        <span class="panel-sub" id="posCount">0 active</span>
+      </div>
+      <div class="positions" id="positions">
+        <p class="empty">no open positions. bot is watching the tape.</p>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="panel panel-journal">
+    <div class="panel-head">
+      <h2>the journal</h2>
+      <span class="panel-sub">every trade, in its own words</span>
+    </div>
+    <div class="journal" id="journal"></div>
+  </section>
+
+  <footer class="foot">
+    <p><strong>reality check:</strong> this runs on a simulated price feed for demo purposes — no real Kalshi
+    connection or real money is involved yet. the strategy is a real volatility-based fair-value model (the
+    same approach used to price binary/event contracts professionally), but it assumes the underlying behaves
+    like a random walk, which real crypto only roughly does. win rate and p&amp;l here show what that model
+    achieves <em>against this simulated market</em> — not a promise of what it does against the real one.
+    see README for what real validation (backtesting on real historical data) requires before this touches
+    a real account or a paying customer.</p>
+  </footer>
+
+</div>
+
+<script src="rain.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
